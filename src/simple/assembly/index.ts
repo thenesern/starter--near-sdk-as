@@ -21,14 +21,21 @@ import { storage, Context } from "near-sdk-as";
 
 // TASK III
 
-export function helloWorld(names: Array<string>): string {
+/* export function helloWorld(names: Array<string>): string {
   return names.map<string>((name) => "hello " + name).join(` `);
-}
+} */
 // near view $CONTRACT helloWorld '{\"names\":[\"huso\",\"deniz\"]}' --accountId eneseren.testnet
 // return the string 'hello hosu hello deniz'
 
-/*------------------------------------------------------*/
+/*-------------------- Practice II ---------------------------*/
 
+export function helloWorld(): string {
+  const predecessor = Context.predecessor;
+  return "hello " + predecessor;
+}
+// return the string 'hello eneseren.testnet'
+
+/*------------------------------------------------------*/
 // read the given key from account (contract) storage
 export function read(key: string): string {
   if (storage.hasKey(key)) {
